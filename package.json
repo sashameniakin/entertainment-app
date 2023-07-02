@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prettier": "prettier --ignore-path .gitignore --check .",
+    "prettier:write": "prettier --ignore-path .gitignore --write ."
   },
   "dependencies": {
     "@types/node": "20.3.2",
