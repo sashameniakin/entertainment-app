@@ -1,6 +1,31 @@
+"use client";
+
 import Image from "next/image";
+import {useEffect, useState} from "react";
 
 export default function Home() {
+  const [movies, setMovies] = useState();
+
+  useEffect(() => {
+    const getMovies = async () => {
+      try {
+        const url = "/api";
+        const response = await fetch(url);
+        if (response.ok) {
+          const data = await response.json();
+          setMovies(data);
+        } else {
+          throw new Error(
+            `Fetch fehlgeschlagen mit Status: ${response.status}`
+          );
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getMovies();
+  }, []);
+
   return (
     <main className="flex flex-col min-h-screen w-full mt-16 mx-9">
       <section className=" flex gap-6 w-full">
