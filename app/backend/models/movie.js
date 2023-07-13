@@ -12,7 +12,6 @@ const movieSchema = new mongoose.Schema({
       large: {
         type: String,
       },
-      required: false,
     },
     regular: {
       small: {
@@ -43,5 +42,7 @@ const movieSchema = new mongoose.Schema({
   },
 });
 
-export const Movie =
-  mongoose.models.Movie || mongoose.model("Movie", movieSchema, "movie");
+const Movies =
+  mongoose.models.Movies || mongoose.model("Movies", movieSchema, "movies");
+
+export default Movies;

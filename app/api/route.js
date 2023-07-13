@@ -1,11 +1,13 @@
 import {NextResponse} from "next/server";
-import connectMongoDB from "../backend/config/dbConnect";
-import Pett from "./db/models/pet";
+import Movies from "../backend/models/movie";
+import dbConnect from "../backend/config/dbConnect";
 
-export async function POST(request) {
-  await connectMongoDB();
-  const {title} = await request.json();
+export async function GET() {
+  await dbConnect();
 
-  await Pett.create({title});
-  return NextResponse.json({message: "Pet created"}, {status: 201});
+  const movies = await Movies.find({});
+
+  console.log(movies);
+
+  return NextResponse.json("Succsess");
 }
