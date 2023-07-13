@@ -1,4 +1,4 @@
-/* import mongoose from "mongoose";
+import mongoose from "mongoose";
 
 const MONGODB_URI = process.env.MONGO_DB_URI;
 
@@ -33,23 +33,10 @@ const dbConnect = async () => {
     cached.conn = await cached.promise;
   } catch (error) {
     cached.promise = null;
-    throw e;
+    throw error;
   }
 
   return cached.conn;
 };
 
-export default dbConnect; */
-
-import mongoose from "mongoose";
-
-const connectMongoDB = async () => {
-  try {
-    await mongoose.connect(process.env.MONGO_DB_URI);
-    console.log("Connected to MongoDB");
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-export default connectMongoDB;
+export default dbConnect;
